@@ -1,0 +1,12 @@
+:host ::ng-deep  section{
+    
+    background-image: url('https://us.123rf.com/450wm/pilvitus/pilvitus2012/pilvitus201200190/162894506-tiras-de-pel%C3%ADcula-3d-realistas-en-perspectiva-fondo-de-cine-moderno-afiche-de-plantilla-para-el.jpg?ver=6');
+}
+
+/*Estilo para la validación de error */
+div.error {
+    color: #f25961 !important;
+    font-size: 90% !important;
+    /* margin-top: 0.5rem; */
+  }
+  

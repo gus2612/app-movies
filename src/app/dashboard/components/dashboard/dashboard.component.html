@@ -1,0 +1,93 @@
+<div class="pagetitle text-center">
+  <h1>PELICULAS POPULARES DE EL MOMENTO</h1>
+</div>
+
+<div class="row mr-6">
+  <div class="col-lg-12">
+    <div class="row">
+      <h5 class="card-title">Peliculas recientes <span>| Hoy</span></h5>
+    </div>
+
+    <div class="row pt-5">
+      <div class="d-flex justify-content-end">
+        <div class="col-md-8">
+          <input
+            type="text"
+            [formControl]="control"
+            class="form-control"
+            placeholder="REALIZA LA BUSQUEDA DE UNA PELICULA"
+            id="search"
+          />
+        </div>
+      </div>
+    </div>
+
+    <form [formGroup]="movieForm" class="pt-4">
+      <table class="table table table-striped pt-5">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">Titulo</th>
+            <th scope="col">Fecha de Lanzamiento</th>
+            <th scope="col">Popularidad</th>
+            <th scope="col">Voto Promedio</th>
+            <th scope="col">Resumen</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <ng-container formArrayName="movies">
+            <tr *ngFor="let movie of infoMovies.controls">
+              <td scope="row" class="align-baseline">
+                {{ movie.get("title")?.value }}
+              </td>
+              <td scope="row" class="align-baseline">
+                {{ movie.get("release_date")?.value }}
+              </td>
+              <td scope="row" class="align-baseline">
+                {{ movie.get("popularity")?.value }}
+              </td>
+              <td scope="row" class="align-baseline">
+                {{ movie.get("vote_average")?.value }}
+              </td>
+              <td scope="row" class="align-baseline">
+                {{ movie.get("overview")?.value }}
+              </td>
+            </tr>
+          </ng-container>
+        </tbody>
+      </table>
+    </form>
+
+    <div class="paginacion">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <div class="p-2">
+            <button
+              *ngIf="disabled"
+              (click)="lastPage()"
+              class="btn btn-success"
+            >
+              Anterior
+            </button>
+            <button
+              *ngIf="!disabled"
+              (click)="lastPage()"
+              class="btn disabled btn-success"
+            >
+              Anterior
+            </button>
+          </div>
+          <div class="p-2">
+            <button (click)="nextPage()" class="btn btn-primary">
+              Siguiente
+            </button>
+          </div>
+        </ul>
+        <div class="d-flex justify-content-end">
+          <h4 class="title">Pagina {{ page }}</h4>
+        </div>
+      </nav>
+    </div>
+    <br />
+  </div>
+</div>
